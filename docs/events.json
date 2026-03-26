@@ -1,12 +1,48 @@
 [
   {
+    "date": "2026-03-26",
+    "store": "スタジアム2001豊中店",
+    "event": "✓ 超玉のリアル ✓ 超スロプリ来店取材🌈 ✓ クワーマン来店",
+    "area": "大阪",
+    "source_url": "https://slotkansai.com/?p=89795",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:40:34+09:00"
+  },
+  {
+    "date": "2026-03-26",
+    "store": "マルハン加島店",
+    "event": "✓ エイムスター取材 ✓ エイムスター玉 ✓ ドラゴンロード＊3/22~3/31",
+    "area": "大阪",
+    "source_url": "https://slotkansai.com/?p=89795",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:40:34+09:00"
+  },
+  {
+    "date": "2026-03-26",
+    "store": "マルハン加島店",
+    "event": "エイムスター玉",
+    "area": "大阪",
+    "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:40:34+09:00"
+  },
+  {
+    "date": "2026-03-27",
+    "store": "マルハン加島店",
+    "event": "エイムスター玉",
+    "area": "大阪",
+    "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:40:34+09:00"
+  },
+  {
     "date": "2026-04-01",
     "store": "123+N羽曳野店",
     "event": "じゃんばり潜入来店取材",
     "area": "大阪",
     "source_url": "https://jb-portal.com/schedule/?report_id=5",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:21:45+09:00"
+    "updated_at": "2026-03-26T11:40:34+09:00"
   },
   {
     "date": "2026-04-16",
@@ -15,6 +51,6 @@
     "area": "大阪",
     "source_url": "https://jb-portal.com/schedule/?report_id=5",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:21:45+09:00"
+    "updated_at": "2026-03-26T11:40:34+09:00"
   }
 ]
