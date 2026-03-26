@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 import logging
-import re
 from datetime import datetime
-from urllib.parse import urljoin
 
 import requests
 
@@ -11,88 +9,44 @@ from ..common import build_record, clean_text, fetch_html, parse_jp_date, soup_f
 
 LOGGER = logging.getLogger(__name__)
 
-ARCHIVE_URL = "https://jb-portal.com/archive/janbari-sennyu/"
-DETAIL_AREA_PATTERN = re.compile(
-    r"\u5927\u962a(?:\u5e9c)?(?P<area>[^0-9()\uFF08\uFF09\s]+?(?:\u5e02|\u533a|\u753a|\u6751))"
-)
-TAMA_PATTERN = re.compile(
-    r"\u30b8\u30e3\u30f3\u30d0\u30ea[\uff08(](?P<suffix>(?:\u8d85)?\u7389)[)\uff09]"
-)
-
-
-def _extract_entries(soup, reference: datetime) -> list[tuple[str, str, str]]:
-    entries: list[tuple[str, str, str]] = []
-    current_date = None
-
-    for tag in soup.find_all(["h4", "a"]):
-        text = clean_text(tag.get_text(" ", strip=True))
-        if not text:
-            continue
-
-        parsed_date = parse_jp_date(text, reference)
-        if tag.name == "h4" and parsed_date:
-            current_date = parsed_date
-            continue
-
-        if tag.name != "a" or not current_date:
-            continue
-
-        if "\u5927\u962a" not in text or "\u30b8\u30e3\u30f3\u30d0\u30ea" not in text:
-            continue
-
-        href = tag.get("href")
-        if not href:
-            continue
-
-        entries.append((current_date, text, urljoin(ARCHIVE_URL, href)))
-
-    return entries
-
-
-def _parse_detail_for_area_and_event(session: requests.Session, detail_url: str) -> tuple[str | None, str | None]:
-    html = fetch_html(session, detail_url)
-    page_text = clean_text(soup_from_html(html).get_text("\n", strip=True))
-
-    area_match = DETAIL_AREA_PATTERN.search(page_text)
-    event_match = TAMA_PATTERN.search(page_text)
-    if not area_match or not event_match:
-        return None, None
-
-    suffix = event_match.group("suffix")
-    return clean_text(area_match.group("area")), f"\u30b8\u30e3\u30f3\u30d0\u30ea\uff08{suffix}\uff09"
-
-
-def _store_from_link_text(text: str) -> str:
-    cleaned = re.sub(r"^\u5927\u962a\s+", "", text)
-    cleaned = re.sub(r"\s+\u30b8\u30e3\u30f3\u30d0\u30ea.+$", "", cleaned)
-    return clean_text(cleaned)
+SCHEDULE_URL = "https://jb-portal.com/schedule/?report_id=5"
+OSAKA_TEXT = "\u5927\u962a"
+EVENT_NAME = "\u3058\u3083\u3093\u3070\u308a\u6f5c\u5165\u6765\u5e97\u53d6\u6750"
 
 
 def scrape(session: requests.Session, reference: datetime, updated_at: str) -> list:
-    html = fetch_html(session, ARCHIVE_URL)
-    soup = soup_from_html(html)
+    html = fetch_html(session, SCHEDULE_URL)
+    lines = [clean_text(line) for line in soup_from_html(html).get_text("\n", strip=True).splitlines()]
+    lines = [line for line in lines if line]
 
     records = []
-    for event_date, link_text, detail_url in _extract_entries(soup, reference):
-        try:
-            area, event_name = _parse_detail_for_area_and_event(session, detail_url)
-        except Exception as exc:  # noqa: BLE001
-            LOGGER.warning("janbari detail skipped: %s (%s)", detail_url, exc)
+    index = 0
+    while index < len(lines):
+        event_date = parse_jp_date(lines[index], reference)
+        if not event_date:
+            index += 1
             continue
 
-        if not area or not event_name:
-            continue
+        if index + 3 >= len(lines):
+            break
 
-        record = build_record(
-            event_date=event_date,
-            store=_store_from_link_text(link_text),
-            event=event_name,
-            area=area,
-            source_url=detail_url,
-            updated_at=updated_at,
-        )
-        if record:
-            records.append(record)
+        prefecture = lines[index + 1]
+        store = lines[index + 2]
+        event_text = lines[index + 3]
+
+        if prefecture == OSAKA_TEXT and event_text == EVENT_NAME:
+            record = build_record(
+                event_date=event_date,
+                store=store,
+                event=EVENT_NAME,
+                area=OSAKA_TEXT,
+                source_url=SCHEDULE_URL,
+                updated_at=updated_at,
+            )
+            if record:
+                records.append(record)
+
+        index += 4
 
     LOGGER.info("janbari: collected %s events", len(records))
     return records

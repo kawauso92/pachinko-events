@@ -6,108 +6,93 @@ from datetime import datetime
 
 import requests
 
-from ..common import (
-    build_record,
-    extract_area,
-    fetch_html,
-    normalize_store_name,
-    parse_entries_from_text,
-    parse_md_date,
-    soup_from_html,
-)
+from ..common import build_record, clean_text, extract_area, fetch_html, parse_md_date, soup_from_html
 
 LOGGER = logging.getLogger(__name__)
 
 SOURCES = [
-    {
-        "url": "https://777.slopachi-station.com/janjan_schedule/",
-        "event": "\u3058\u3083\u3093\u3058\u3083\u3093",
-        "store_prefixes": (
-            "\u3058\u3083\u3093\u3058\u3083\u3093\u5b9f\u8df5\u6765\u5e97",
-            "\u3058\u3083\u3093\u3058\u3083\u3093\u5b9f\u8df5\u6765\u5e97 (\u4e88\u5b9a)",
-        ),
-    },
-    {
-        "url": "https://777.slopachi-station.com/renjiro_schedule/",
-        "event": "\u308c\u3093\u3058\u308d\u3046",
-        "store_prefixes": (
-            "\u308c\u3093\u3058\u308d\u3046\u5b9f\u8df5\u6765\u5e97",
-            "\u308c\u3093\u3058\u308d\u3046\u5b9f\u8df5\u6765\u5e97 (\u4e88\u5b9a)",
-        ),
-    },
-    {
-        "url": "https://777.slopachi-station.com/raiten_syuzai002_schedule/",
-        "event": "\u6765\u5e97\u53d6\u6750(\u9ed2)",
-        "store_prefixes": ("\u30b9\u30ed\u30d1\u30c1\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u6765\u5e97\u53d6\u6750",),
-    },
-    {
-        "url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
-        "event": None,
-        "store_prefixes": (),
-    },
-    {
-        "url": "https://777.slopachi-station.com/keihin_nyuka_schedule/",
-        "event": "\u3059\u308d\u3071\u3061\u666f\u54c1\u5165\u8377",
-        "store_prefixes": (
-            "\u30b9\u30ed\u30d1\u30c1\u666f\u54c1\u5165\u8377",
-            "\u666f\u54c1\u5165\u8377",
-        ),
-    },
+    "https://777.slopachi-station.com/janjan_schedule/",
+    "https://777.slopachi-station.com/renjiro_schedule/",
+    "https://777.slopachi-station.com/raiten_syuzai002_schedule/",
+    "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "https://777.slopachi-station.com/keihin_nyuka_schedule/",
 ]
 
-GIRL_EVENT_PATTERN = re.compile(
-    r"(?:\u30b9\u30ed|\u3059\u308d)\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97\s*(PS|P|S)",
-    re.IGNORECASE,
-)
+DATE_PATTERN = re.compile(r"(?P<month>\d{1,2})/(?P<day>\d{1,2})\s*\([\u6708\u706b\u6c34\u6728\u91d1\u571f\u65e5]\)")
+AREA_PATTERN = re.compile(r"\u3010(?P<location>[^\u3011]+)\u3011")
+ENTRY_SPLIT_PATTERN = re.compile(r"\u3000+")
+HIRAGANA_SLOPACHI = "\u3059\u308d\u3071\u3061"
 
 
-def _extract_girl_event(entry: str) -> tuple[str | None, str]:
-    match = GIRL_EVENT_PATTERN.search(entry)
-    if not match:
-        if "icon-slopachigirl-ps" in entry.lower():
-            return "\u3059\u308d\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97PS", entry
-        return None, entry
+def _iter_text_nodes(soup):
+    for value in soup.stripped_strings:
+        text = clean_text(value)
+        if text:
+            yield text
 
-    suffix = match.group(1).upper()
-    if suffix not in {"P", "PS"}:
-        return None, entry
 
-    store = entry[match.end() :].strip()
-    return f"\u3059\u308d\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97{suffix}", store
+def _parse_anchor_text(text: str) -> tuple[str | None, str | None]:
+    parts = [clean_text(part) for part in ENTRY_SPLIT_PATTERN.split(text) if clean_text(part)]
+    if len(parts) < 2:
+        return None, None
+    return parts[0], parts[-1]
 
 
 def scrape(session: requests.Session, reference: datetime, updated_at: str) -> list:
     records = []
 
-    for source in SOURCES:
-        html = fetch_html(session, source["url"])
-        page_text = soup_from_html(html).get_text("\n", strip=True)
-        for item in parse_entries_from_text(page_text):
-            area = extract_area(item["location"])
-            if not area:
+    for url in SOURCES:
+        html = fetch_html(session, url)
+        soup = soup_from_html(html)
+
+        current_date = None
+        current_area = None
+
+        for node in soup.descendants:
+            if getattr(node, "name", None) == "a":
+                href = node.get("href")
+                if not href or "/shop_data/" not in href:
+                    continue
+
+                anchor_text = clean_text(node.get_text(" ", strip=True))
+                event_name, store = _parse_anchor_text(anchor_text)
+                if not event_name or not store or not current_date or not current_area:
+                    continue
+
+                if url.endswith("/keihin_nyuka_schedule/") and HIRAGANA_SLOPACHI not in event_name:
+                    continue
+
+                record = build_record(
+                    event_date=current_date,
+                    store=store,
+                    event=event_name,
+                    area=current_area,
+                    source_url=url,
+                    updated_at=updated_at,
+                )
+                if record:
+                    records.append(record)
                 continue
 
-            event_date = parse_md_date(int(item["month"]), int(item["day"]), reference)
-            entry = item["entry"]
+            if getattr(node, "name", None) is not None:
+                continue
 
-            if source["url"].endswith("slopachi_girl_schedule/"):
-                event_name, store = _extract_girl_event(entry)
-                if not event_name:
-                    continue
-            else:
-                event_name = source["event"]
-                store = normalize_store_name(entry, source["store_prefixes"])
+            text = clean_text(str(node))
+            if not text:
+                continue
 
-            record = build_record(
-                event_date=event_date,
-                store=store,
-                event=event_name,
-                area=area,
-                source_url=source["url"],
-                updated_at=updated_at,
-            )
-            if record:
-                records.append(record)
+            date_match = DATE_PATTERN.search(text)
+            if date_match:
+                current_date = parse_md_date(
+                    int(date_match.group("month")),
+                    int(date_match.group("day")),
+                    reference,
+                )
+                continue
+
+            area_match = AREA_PATTERN.search(text)
+            if area_match:
+                current_area = extract_area(area_match.group("location"))
 
     LOGGER.info("slopachi: collected %s events", len(records))
     return records

@@ -196,9 +196,9 @@ def within_retention(event_date: str, reference: datetime, days: int) -> bool:
 
 
 def dedupe_records(records: Iterable[EventRecord]) -> list[EventRecord]:
-    unique: dict[tuple[str, str, str, str], EventRecord] = {}
+    unique: dict[tuple[str, str, str], EventRecord] = {}
     for record in records:
-        key = (record.date, record.store, record.event, record.source_url)
+        key = (record.date, record.store, record.event)
         unique[key] = record
     return sorted(unique.values(), key=lambda item: (item.date, item.area, item.store, item.event))
 

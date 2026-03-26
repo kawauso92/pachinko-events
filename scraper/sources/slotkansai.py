@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import re
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 import requests
 
@@ -12,105 +12,98 @@ from ..common import build_record, clean_text, fetch_html, parse_jp_date, soup_f
 LOGGER = logging.getLogger(__name__)
 
 CATEGORY_URL = "https://slotkansai.com/?cat=2"
+OSAKA_TEXT = "\u5927\u962a"
+KEYWORDS = [
+    "\u3058\u3083\u3093\u3058\u3083\u3093",
+    "\u308c\u3093\u3058\u308d\u3046",
+    "\u30a8\u30a4\u30e0\u30b9\u30bf\u30fc\u7389",
+    "\u30a8\u30a4\u30e0\u30b9\u30bf\u30fc\u8d85\u7389",
+    "\u3058\u3083\u3093\u3070\u308a",
+    "\u8d85\u7389\u306e\u30ea\u30a2\u30eb",
+    "\u3059\u308d\u3071\u3061",
+]
 TITLE_DATE_PATTERN = re.compile(r"(\d{1,2})\u6708(\d{1,2})\u65e5")
-AREA_PATTERN = re.compile(
-    r"\u5927\u962a(?:\u5e9c)?(?P<area>[^0-9()\uFF08\uFF09\s]+?(?:\u5e02|\u533a|\u753a|\u6751))"
-)
-STORE_SPLIT_PATTERN = re.compile(r"[\u2713\u2605\u2606\u30fb,\u3001/]")
 
 
-def _canonical_event(text: str) -> str | None:
-    normalized = clean_text(text)
-    if "\u3058\u3083\u3093\u3058\u3083\u3093" in normalized:
-        return "\u3058\u3083\u3093\u3058\u3083\u3093"
-    if "\u308c\u3093\u3058\u308d\u3046" in normalized:
-        return "\u308c\u3093\u3058\u308d\u3046"
-    if (
-        "\u3059\u308d\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97PS" in normalized
-        or "\u30b9\u30ed\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97PS" in normalized
-    ):
-        return "\u3059\u308d\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97PS"
-    if (
-        "\u3059\u308d\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97P" in normalized
-        or "\u30b9\u30ed\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97P" in normalized
-    ):
-        return "\u3059\u308d\u3071\u3061\u30ac\u30fc\u30eb\u6765\u5e97P"
-    if (
-        "\u3059\u308d\u3071\u3061\u666f\u54c1\u5165\u8377" in normalized
-        or "\u30b9\u30ed\u30d1\u30c1\u666f\u54c1\u5165\u8377" in normalized
-    ):
-        return "\u3059\u308d\u3071\u3061\u666f\u54c1\u5165\u8377"
-    if (
-        "\u6765\u5e97\u53d6\u6750(\u9ed2)" in normalized
-        or "raiten-black" in normalized
-        or "\u3059\u308d\u3071\u3061\u53d6\u6750" in normalized
-    ):
-        return "\u3059\u308d\u3071\u3061\u53d6\u6750"
-    if "\u30a8\u30a4\u30e0\u30b9\u30bf\u30fc\u8d85\u7389" in normalized:
-        return "\u30a8\u30a4\u30e0\u30b9\u30bf\u30fc\u8d85\u7389"
-    if "\u30a8\u30a4\u30e0\u30b9\u30bf\u30fc\u7389" in normalized:
-        return "\u30a8\u30a4\u30e0\u30b9\u30bf\u30fc\u7389"
-    if "\u30a8\u30a4\u30e0\u30ba\u30ac\u30fc\u30eb\u7389" in normalized:
-        return "\u30a8\u30a4\u30e0\u30ba\u30ac\u30fc\u30eb\u7389"
+def _is_article_url(url: str) -> bool:
+    parsed = urlparse(url)
+    if parsed.netloc and parsed.netloc != "slotkansai.com":
+        return False
+    if not parsed.path or parsed.path == "/":
+        return False
+    if parsed.query and "cat=2" in parsed.query:
+        return False
+    if parsed.path.startswith(("/category/", "/tag/", "/author/", "/wp-", "/page/")):
+        return False
+    return True
 
-    match = re.search(
-        r"\u30b8\u30e3\u30f3\u30d0\u30ea[\uff08(]((?:\u8d85)?\u7389)[)\uff09]",
-        normalized,
-    )
-    if match:
-        return f"\u30b8\u30e3\u30f3\u30d0\u30ea\uff08{match.group(1)}\uff09"
+
+def _collect_article_urls(soup) -> list[str]:
+    urls = []
+    seen = set()
+
+    for anchor in soup.select("article a[href], h1 a[href], h2 a[href], h3 a[href]"):
+        href = anchor.get("href")
+        if not href:
+            continue
+
+        absolute = urljoin(CATEGORY_URL, href)
+        if not _is_article_url(absolute) or absolute in seen:
+            continue
+
+        seen.add(absolute)
+        urls.append(absolute)
+        if len(urls) == 10:
+            break
+
+    return urls
+
+
+def _extract_event_text(value: str) -> str | None:
+    text = clean_text(value)
+    for keyword in KEYWORDS:
+        if keyword in text:
+            return text
     return None
 
 
-def _parse_post_date(title: str, reference: datetime) -> str | None:
+def _extract_date_from_title(article_soup, reference: datetime) -> str | None:
+    title = ""
+    for selector in ("h1.entry-title", "h1", "title"):
+        tag = article_soup.select_one(selector)
+        if tag:
+            title = clean_text(tag.get_text(" ", strip=True))
+            if title:
+                break
+
     match = TITLE_DATE_PATTERN.search(title)
     if not match:
         return None
-    month, day = int(match.group(1)), int(match.group(2))
-    return parse_jp_date(f"{month}\u6708{day}\u65e5", reference)
+
+    return parse_jp_date(f"{match.group(1)}\u6708{match.group(2)}\u65e5", reference)
 
 
-def _extract_candidates(text: str) -> list[str]:
-    segments = [clean_text(part) for part in STORE_SPLIT_PATTERN.split(text)]
-    return [segment for segment in segments if segment]
+def _header_indexes(table) -> tuple[int | None, int | None]:
+    header_cells = table.select("tr th")
+    headers = [clean_text(cell.get_text(" ", strip=True)) for cell in header_cells]
 
+    store_index = None
+    event_index = None
+    for index, header in enumerate(headers):
+        if header == "\u30db\u30fc\u30eb\u540d":
+            store_index = index
+        if header == "\u7279\u5b9a\u65e5/\u53d6\u6750/\u6765\u5e97":
+            event_index = index
 
-def _extract_store(line: str, event_name: str) -> str | None:
-    if event_name not in line:
-        return None
-
-    before = clean_text(line.split(event_name, 1)[0])
-    candidates = _extract_candidates(before)
-    if not candidates:
-        return None
-    return candidates[-1]
-
-
-def _extract_area(post_text: str) -> str | None:
-    match = AREA_PATTERN.search(post_text)
-    if match:
-        return clean_text(match.group("area"))
-    return None
+    return store_index, event_index
 
 
 def scrape(session: requests.Session, reference: datetime, updated_at: str) -> list:
     html = fetch_html(session, CATEGORY_URL)
     soup = soup_from_html(html)
+
     records = []
-
-    article_links = []
-    for anchor in soup.select("a"):
-        href = anchor.get("href")
-        text = clean_text(anchor.get_text(" ", strip=True))
-        if href and "\u8a73\u3057\u304f\u898b\u308b" in text:
-            article_links.append(urljoin(CATEGORY_URL, href))
-
-    seen_links = set()
-    for article_url in article_links:
-        if article_url in seen_links:
-            continue
-        seen_links.add(article_url)
-
+    for article_url in _collect_article_urls(soup):
         try:
             article_html = fetch_html(session, article_url)
         except Exception as exc:  # noqa: BLE001
@@ -118,39 +111,36 @@ def scrape(session: requests.Session, reference: datetime, updated_at: str) -> l
             continue
 
         article_soup = soup_from_html(article_html)
-        title = clean_text(article_soup.title.get_text(" ", strip=True)) if article_soup.title else ""
-        event_date = _parse_post_date(title, reference)
+        event_date = _extract_date_from_title(article_soup, reference)
         if not event_date:
             continue
 
-        article_text = article_soup.get_text("\n", strip=True)
-        area = _extract_area(article_text)
-        if not area:
-            continue
-
-        for raw_line in article_text.splitlines():
-            line = clean_text(raw_line)
-            if not line:
+        for table in article_soup.select("table"):
+            store_index, event_index = _header_indexes(table)
+            if store_index is None or event_index is None:
                 continue
 
-            event_name = _canonical_event(line)
-            if not event_name:
-                continue
+            for row in table.select("tr"):
+                cells = row.find_all(["td", "th"])
+                values = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]
+                if len(values) <= max(store_index, event_index):
+                    continue
 
-            store = _extract_store(line, event_name)
-            if not store:
-                continue
+                store = values[store_index]
+                event_text = _extract_event_text(values[event_index])
+                if not store or not event_text:
+                    continue
 
-            record = build_record(
-                event_date=event_date,
-                store=store,
-                event=event_name,
-                area=area,
-                source_url=article_url,
-                updated_at=updated_at,
-            )
-            if record:
-                records.append(record)
+                record = build_record(
+                    event_date=event_date,
+                    store=store,
+                    event=event_text,
+                    area=OSAKA_TEXT,
+                    source_url=article_url,
+                    updated_at=updated_at,
+                )
+                if record:
+                    records.append(record)
 
     LOGGER.info("slotkansai: collected %s events", len(records))
     return records
