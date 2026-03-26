@@ -22,23 +22,22 @@ def scrape(session: requests.Session, reference: datetime, updated_at: str) -> l
 
     for url, event_name in SOURCES:
         html = fetch_html(session, url)
-        lines = [clean_text(line) for line in soup_from_html(html).get_text("\n", strip=True).splitlines()]
-        lines = [line for line in lines if line]
+        soup = soup_from_html(html)
 
-        index = 0
-        while index < len(lines):
-            event_date = parse_jp_date(lines[index], reference)
-            if not event_date:
-                index += 1
+        for item in soup.select("a.c-schedule__item"):
+            date_tag = item.select_one(".c-schedule__date")
+            area_tag = item.select_one(".c-schedule__area")
+            store_tag = item.select_one(".c-schedule__title")
+            if not date_tag or not area_tag or not store_tag:
                 continue
 
-            if index + 2 >= len(lines):
-                break
-
-            prefecture = lines[index + 1]
-            store = lines[index + 2]
+            prefecture = clean_text(area_tag.get_text(" ", strip=True))
             if prefecture != OSAKA_TEXT:
-                index += 1
+                continue
+
+            event_date = parse_jp_date(clean_text(date_tag.get_text("", strip=True)), reference)
+            store = clean_text(store_tag.get_text(" ", strip=True))
+            if not event_date or not store:
                 continue
 
             record = build_record(
@@ -51,8 +50,6 @@ def scrape(session: requests.Session, reference: datetime, updated_at: str) -> l
             )
             if record:
                 records.append(record)
-
-            index += 3
 
     LOGGER.info("aims: collected %s events", len(records))
     return records

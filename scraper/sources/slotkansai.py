@@ -29,7 +29,9 @@ def _is_article_url(url: str) -> bool:
     parsed = urlparse(url)
     if parsed.netloc and parsed.netloc != "slotkansai.com":
         return False
-    if not parsed.path or parsed.path == "/":
+    if not parsed.path:
+        return False
+    if parsed.path == "/" and not parsed.query.startswith("p="):
         return False
     if parsed.query and "cat=2" in parsed.query:
         return False
@@ -42,19 +44,20 @@ def _collect_article_urls(soup) -> list[str]:
     urls = []
     seen = set()
 
-    for anchor in soup.select("article a[href], h1 a[href], h2 a[href], h3 a[href]"):
-        href = anchor.get("href")
-        if not href:
-            continue
+    for selector in ("ul.article-list p.title a[href]", "ul.article-list a.link[href]"):
+        for anchor in soup.select(selector):
+            href = anchor.get("href")
+            if not href:
+                continue
 
-        absolute = urljoin(CATEGORY_URL, href)
-        if not _is_article_url(absolute) or absolute in seen:
-            continue
+            absolute = urljoin(CATEGORY_URL, href)
+            if not _is_article_url(absolute) or absolute in seen:
+                continue
 
-        seen.add(absolute)
-        urls.append(absolute)
-        if len(urls) == 10:
-            break
+            seen.add(absolute)
+            urls.append(absolute)
+            if len(urls) == 10:
+                return urls
 
     return urls
 
@@ -84,7 +87,11 @@ def _extract_date_from_title(article_soup, reference: datetime) -> str | None:
 
 
 def _header_indexes(table) -> tuple[int | None, int | None]:
-    header_cells = table.select("tr th")
+    header_row = table.select_one("tr")
+    if not header_row:
+        return None, None
+
+    header_cells = header_row.find_all(["th", "td"])
     headers = [clean_text(cell.get_text(" ", strip=True)) for cell in header_cells]
 
     store_index = None
@@ -120,7 +127,7 @@ def scrape(session: requests.Session, reference: datetime, updated_at: str) -> l
             if store_index is None or event_index is None:
                 continue
 
-            for row in table.select("tr"):
+            for row in table.select("tr")[1:]:
                 cells = row.find_all(["td", "th"])
                 values = [clean_text(cell.get_text(" ", strip=True)) for cell in cells]
                 if len(values) <= max(store_index, event_index):
