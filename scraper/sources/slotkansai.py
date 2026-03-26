@@ -23,6 +23,7 @@ KEYWORDS = [
     "\u3059\u308d\u3071\u3061",
 ]
 TITLE_DATE_PATTERN = re.compile(r"(\d{1,2})\u6708(\d{1,2})\u65e5")
+EVENT_EDGE_PATTERN = re.compile(r"^[^0-9A-Za-z\u3040-\u30FF\u4E00-\u9FFF]+|[^0-9A-Za-z\u3040-\u30FF\u4E00-\u9FFF]+$")
 
 
 def _is_article_url(url: str) -> bool:
@@ -62,8 +63,31 @@ def _collect_article_urls(soup) -> list[str]:
     return urls
 
 
-def _extract_event_text(value: str) -> str | None:
+def _normalize_event_segment(value: str) -> str:
     text = clean_text(value)
+    return EVENT_EDGE_PATTERN.sub("", text)
+
+
+def _extract_event_text(cell) -> str | None:
+    segments = [clean_text(part) for part in cell.get_text("\n", strip=True).splitlines()]
+    segments = [segment for segment in segments if segment]
+
+    matched_events = []
+    for segment in segments:
+        normalized = _normalize_event_segment(segment)
+        if not normalized:
+            continue
+
+        for keyword in KEYWORDS:
+            if keyword in normalized:
+                if normalized not in matched_events:
+                    matched_events.append(normalized)
+                break
+
+    if not matched_events:
+        return None
+
+    text = "/".join(matched_events)
     for keyword in KEYWORDS:
         if keyword in text:
             return text
@@ -134,7 +158,7 @@ def scrape(session: requests.Session, reference: datetime, updated_at: str) -> l
                     continue
 
                 store = values[store_index]
-                event_text = _extract_event_text(values[event_index])
+                event_text = _extract_event_text(cells[event_index])
                 if not store or not event_text:
                     continue
 

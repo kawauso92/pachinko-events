@@ -18,7 +18,9 @@ SOURCES = [
     "https://777.slopachi-station.com/keihin_nyuka_schedule/",
 ]
 
-DATE_PATTERN = re.compile(r"(?P<month>\d{1,2})/(?P<day>\d{1,2})\s*\([\u6708\u706b\u6c34\u6728\u91d1\u571f\u65e5]\)")
+DATE_PATTERN = re.compile(
+    r"(?P<month>\d{1,2})/(?P<day>\d{1,2})\s*\(\s*[\u6708\u706b\u6c34\u6728\u91d1\u571f\u65e5]\s*\)"
+)
 AREA_PATTERN = re.compile(r"\u3010(?P<location>[^\u3011]+)\u3011")
 ENTRY_SPLIT_PATTERN = re.compile(r"(?:\u00a0|\u3000|\s){2,}")
 HIRAGANA_SLOPACHI = "\u3059\u308d\u3071\u3061"
