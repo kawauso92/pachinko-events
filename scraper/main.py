@@ -5,7 +5,7 @@ from datetime import datetime
 
 from .common import dedupe_records, iso_timestamp, make_session, now_jst, within_retention, write_json
 from .config import OUTPUT_PATH, RETENTION_DAYS
-from .sources import aims, janbari, slopachi, slotkansai
+from .sources import aims, janbari, slopachi, slotkansai, waasan
 
 LOGGER = logging.getLogger(__name__)
 
@@ -14,6 +14,7 @@ SCRAPERS = [
     ("aims", aims.scrape),
     ("janbari", janbari.scrape),
     ("slotkansai", slotkansai.scrape),
+    ("waasan", waasan.scrape),
 ]
 
 
