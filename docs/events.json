@@ -2,29 +2,20 @@
   {
     "date": "2026-03-26",
     "store": "スタジアム2001豊中店",
-    "event": "✓ 超玉のリアル ✓ 超スロプリ来店取材🌈 ✓ クワーマン来店",
+    "event": "超玉のリアル",
     "area": "大阪",
     "source_url": "https://slotkansai.com/?p=89795",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:40:34+09:00"
-  },
-  {
-    "date": "2026-03-26",
-    "store": "マルハン加島店",
-    "event": "✓ エイムスター取材 ✓ エイムスター玉 ✓ ドラゴンロード＊3/22~3/31",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=89795",
-    "category": "pachinko",
-    "updated_at": "2026-03-26T11:40:34+09:00"
+    "updated_at": "2026-03-26T11:48:11+09:00"
   },
   {
     "date": "2026-03-26",
     "store": "マルハン加島店",
     "event": "エイムスター玉",
     "area": "大阪",
-    "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
+    "source_url": "https://slotkansai.com/?p=89795",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:40:34+09:00"
+    "updated_at": "2026-03-26T11:48:11+09:00"
   },
   {
     "date": "2026-03-27",
@@ -33,7 +24,34 @@
     "area": "大阪",
     "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:40:34+09:00"
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-03-28",
+    "store": "123門真店",
+    "event": "スロパチステーション来店取材",
+    "area": "門真市",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-03-29",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロパチステーション来店取材",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-03-31",
+    "store": "HYPER ARROW 美原店",
+    "event": "じゃんじゃん実践来店",
+    "area": "堺市美原区",
+    "source_url": "https://777.slopachi-station.com/janjan_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
   },
   {
     "date": "2026-04-01",
@@ -42,7 +60,25 @@
     "area": "大阪",
     "source_url": "https://jb-portal.com/schedule/?report_id=5",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:40:34+09:00"
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-04-02",
+    "store": "123門真店",
+    "event": "スロパチステーション来店取材",
+    "area": "門真市",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-04-11",
+    "store": "123門真店",
+    "event": "スロパチステーション来店取材",
+    "area": "門真市",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
   },
   {
     "date": "2026-04-16",
@@ -51,6 +87,24 @@
     "area": "大阪",
     "source_url": "https://jb-portal.com/schedule/?report_id=5",
     "category": "pachinko",
-    "updated_at": "2026-03-26T11:40:34+09:00"
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-04-17",
+    "store": "ラクエンプラス",
+    "event": "じゃんじゃん実践来店",
+    "area": "堺市",
+    "source_url": "https://777.slopachi-station.com/janjan_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
+  },
+  {
+    "date": "2026-04-18",
+    "store": "123門真店",
+    "event": "スロパチステーション来店取材",
+    "area": "門真市",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:48:11+09:00"
   }
 ]
