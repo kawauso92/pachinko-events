@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "date": "2026-04-01",
+    "store": "123+N羽曳野店",
+    "event": "じゃんばり潜入来店取材",
+    "area": "大阪",
+    "source_url": "https://jb-portal.com/schedule/?report_id=5",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:21:45+09:00"
+  },
+  {
+    "date": "2026-04-16",
+    "store": "123+N羽曳野店",
+    "event": "じゃんばり潜入来店取材",
+    "area": "大阪",
+    "source_url": "https://jb-portal.com/schedule/?report_id=5",
+    "category": "pachinko",
+    "updated_at": "2026-03-26T11:21:45+09:00"
+  }
+]
