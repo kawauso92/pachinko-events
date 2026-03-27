@@ -15,6 +15,7 @@ SOURCES = [
     "https://777.slopachi-station.com/renjiro_schedule/",
     "https://777.slopachi-station.com/raiten_syuzai002_schedule/",
     "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "https://777.slopachi-station.com/slopachi_girl_schedule/",
     "https://777.slopachi-station.com/keihin_nyuka_schedule/",
 ]
 EVENT_NAME_BY_URL = {
@@ -31,6 +32,7 @@ DATE_PATTERN = re.compile(
 AREA_PATTERN = re.compile(r"\u3010(?P<location>[^\u3011]+)\u3011")
 ENTRY_SPLIT_PATTERN = re.compile(r"(?:\u00a0|\u3000|\s){2,}")
 HIRAGANA_SLOPACHI = "\u3059\u308d\u3071\u3061"
+SLOPACHI_GIRL_URL = "https://777.slopachi-station.com/slopachi_girl_schedule/"
 
 
 def _parse_anchor_text(text: str) -> tuple[str | None, str | None]:
@@ -76,7 +78,13 @@ def scrape(session: requests.Session, reference: datetime, updated_at: str) -> l
             if url.endswith("/keihin_nyuka_schedule/") and HIRAGANA_SLOPACHI not in parsed_event_name:
                 continue
 
-            event_name = EVENT_NAME_BY_URL.get(url, parsed_event_name)
+            if url == SLOPACHI_GIRL_URL:
+                after_raiten = parsed_event_name.split("\u6765\u5e97")[-1].strip()
+                if after_raiten not in {"P", "PS"}:
+                    continue
+                event_name = parsed_event_name
+            else:
+                event_name = EVENT_NAME_BY_URL.get(url, parsed_event_name)
 
             record = build_record(
                 event_date=event_date,
