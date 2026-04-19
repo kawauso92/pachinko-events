@@ -1,39 +1,21 @@
 [
   {
-    "date": "2026-04-19",
-    "store": "アロー志紀店",
-    "event": "じゃんばり潜入来店取材",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=90986",
-    "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
-  },
-  {
-    "date": "2026-04-19",
+    "date": "2026-04-20",
     "store": "スタジアム2001豊中店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=90986",
+    "source_url": "https://slotkansai.com/?p=91051",
     "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
+    "updated_at": "2026-04-20T07:46:42+09:00"
   },
   {
-    "date": "2026-04-19",
-    "store": "スーパーホール",
-    "event": "じゃんばり景品入荷(炎",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=90986",
-    "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
-  },
-  {
-    "date": "2026-04-19",
+    "date": "2026-04-20",
     "store": "マルハン高槻店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=90986",
+    "source_url": "https://slotkansai.com/?p=91051",
     "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
+    "updated_at": "2026-04-20T07:46:42+09:00"
   },
   {
     "date": "2026-04-21",
@@ -42,7 +24,16 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
+    "updated_at": "2026-04-20T07:46:42+09:00"
+  },
+  {
+    "date": "2026-04-21",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロぱちガール来店PS",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-04-20T07:46:42+09:00"
   },
   {
     "date": "2026-04-22",
@@ -51,7 +42,7 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
+    "updated_at": "2026-04-20T07:46:42+09:00"
   },
   {
     "date": "2026-04-23",
@@ -60,7 +51,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/janjan_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
+    "updated_at": "2026-04-20T07:46:42+09:00"
   },
   {
     "date": "2026-04-28",
@@ -69,6 +60,6 @@
     "area": "松原市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-04-19T07:45:41+09:00"
+    "updated_at": "2026-04-20T07:46:42+09:00"
   }
 ]
