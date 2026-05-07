@@ -1,39 +1,12 @@
 [
   {
-    "date": "2026-05-07",
+    "date": "2026-05-08",
     "store": "スタジアム2001豊中店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=92008",
+    "source_url": "https://slotkansai.com/?p=92010",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
-  },
-  {
-    "date": "2026-05-07",
-    "store": "マルハンなんば本館",
-    "event": "スロパチステーション来店取材(オレンジ)",
-    "area": "大阪市中央区",
-    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
-  },
-  {
-    "date": "2026-05-07",
-    "store": "マルハン梅田店",
-    "event": "スロパチステーション来店取材(黒)",
-    "area": "大阪市北区",
-    "source_url": "https://777.slopachi-station.com/raiten_syuzai002_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
-  },
-  {
-    "date": "2026-05-07",
-    "store": "MEGAFACE1300淀川",
-    "event": "スロぱちガール来店PS",
-    "area": "大阪市淀川区",
-    "source_url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-09",
@@ -42,7 +15,7 @@
     "area": "大阪",
     "source_url": "https://jb-portal.com/schedule/?report_id=5",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-09",
@@ -51,7 +24,7 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-12",
@@ -60,7 +33,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-16",
@@ -69,7 +42,7 @@
     "area": "大阪",
     "source_url": "https://tama-dojo.com/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-16",
@@ -78,7 +51,7 @@
     "area": "松原市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-21",
@@ -87,16 +60,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
-  },
-  {
-    "date": "2026-05-23",
-    "store": "MEGAFACE1300淀川",
-    "event": "スロパチステーション来店取材(オレンジ)",
-    "area": "大阪市淀川区",
-    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-23",
@@ -105,7 +69,7 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   },
   {
     "date": "2026-05-25",
@@ -114,15 +78,6 @@
     "area": "大阪",
     "source_url": "https://tama-dojo.com/",
     "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
-  },
-  {
-    "date": "2026-05-29",
-    "store": "MEGAFACE1300淀川",
-    "event": "スロパチステーション来店取材(オレンジ)",
-    "area": "大阪市淀川区",
-    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-05-07T07:57:48+09:00"
+    "updated_at": "2026-05-08T08:04:38+09:00"
   }
 ]
