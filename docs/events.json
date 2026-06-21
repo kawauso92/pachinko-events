@@ -1,57 +1,21 @@
 [
   {
-    "date": "2026-06-21",
+    "date": "2026-06-22",
     "store": "スタジアム2001豊中店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=94488",
+    "source_url": "https://slotkansai.com/?p=94644",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
-  },
-  {
-    "date": "2026-06-21",
-    "store": "ベガスベガス弁天町店",
-    "event": "超玉のリアル",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=94488",
-    "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
-  },
-  {
-    "date": "2026-06-21",
-    "store": "マルハン加島店",
-    "event": "エイムスター玉",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=94488",
-    "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
-  },
-  {
-    "date": "2026-06-21",
-    "store": "天王寺駅北口スーパーホール",
-    "event": "じゃんばり景品入荷(炎",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=94488",
-    "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
-  },
-  {
-    "date": "2026-06-21",
-    "store": "MEGAFACE1300淀川",
-    "event": "スロぱちガール来店PS",
-    "area": "大阪市淀川区",
-    "source_url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-22",
     "store": "マルハン加島店",
     "event": "エイムスター玉",
     "area": "大阪",
-    "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
+    "source_url": "https://slotkansai.com/?p=94644",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-23",
@@ -60,7 +24,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/janjan_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-23",
@@ -69,7 +33,7 @@
     "area": "大阪",
     "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-23",
@@ -78,7 +42,7 @@
     "area": "松原市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-24",
@@ -87,7 +51,25 @@
     "area": "堺市西区",
     "source_url": "https://777.slopachi-station.com/janjan_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
+  },
+  {
+    "date": "2026-06-24",
+    "store": "マルハン加島店",
+    "event": "エイムスター玉",
+    "area": "大阪",
+    "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
+    "category": "pachinko",
+    "updated_at": "2026-06-22T08:23:28+09:00"
+  },
+  {
+    "date": "2026-06-25",
+    "store": "マルハン加島店",
+    "event": "エイムスター玉",
+    "area": "大阪",
+    "source_url": "https://aims777.com/syuzai/aimstar_gyoku/",
+    "category": "pachinko",
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-27",
@@ -96,7 +78,7 @@
     "area": "大阪",
     "source_url": "https://tama-dojo.com/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-28",
@@ -105,7 +87,7 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/renjiro_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   },
   {
     "date": "2026-06-29",
@@ -114,6 +96,6 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-21T08:17:44+09:00"
+    "updated_at": "2026-06-22T08:23:28+09:00"
   }
 ]
