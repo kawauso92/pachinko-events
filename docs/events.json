@@ -1,30 +1,12 @@
 [
   {
-    "date": "2026-06-30",
-    "store": "スタジアム2001豊中店",
-    "event": "超玉のリアル",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=95041",
-    "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
-  },
-  {
-    "date": "2026-06-30",
-    "store": "マルハン加島店",
-    "event": "スロパチステーション来店取材(オレンジ)",
-    "area": "大阪市淀川区",
-    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
-  },
-  {
     "date": "2026-07-01",
     "store": "HYPER ARROW 美原店",
     "event": "スロパチステーション来店取材(オレンジ)",
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
+    "updated_at": "2026-07-01T08:19:38+09:00"
   },
   {
     "date": "2026-07-01",
@@ -33,16 +15,16 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
+    "updated_at": "2026-07-01T08:19:38+09:00"
   },
   {
-    "date": "2026-07-06",
-    "store": "ARROW志紀店",
-    "event": "じゃんばり潜入来店取材",
-    "area": "大阪",
-    "source_url": "https://jb-portal.com/schedule/?report_id=5",
+    "date": "2026-07-03",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロパチステーション来店取材(オレンジ)",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
+    "updated_at": "2026-07-01T08:19:38+09:00"
   },
   {
     "date": "2026-07-10",
@@ -51,7 +33,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
+    "updated_at": "2026-07-01T08:19:38+09:00"
   },
   {
     "date": "2026-07-11",
@@ -60,24 +42,15 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
+    "updated_at": "2026-07-01T08:19:38+09:00"
   },
   {
-    "date": "2026-07-18",
-    "store": "K'ZONE",
-    "event": "わーさん道場破り",
-    "area": "大阪",
-    "source_url": "https://tama-dojo.com/",
-    "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
-  },
-  {
-    "date": "2026-07-21",
-    "store": "HYPER ARROW 美原店",
+    "date": "2026-07-19",
+    "store": "MEGAFACE1300淀川",
     "event": "スロパチステーション来店取材(オレンジ)",
-    "area": "堺市美原区",
+    "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-06-30T08:06:39+09:00"
+    "updated_at": "2026-07-01T08:19:38+09:00"
   }
 ]
