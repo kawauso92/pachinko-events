@@ -1,39 +1,21 @@
 [
   {
-    "date": "2026-07-18",
-    "store": "K'ZONE",
-    "event": "わーさん道場破り",
-    "area": "大阪",
-    "source_url": "https://tama-dojo.com/",
-    "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
-  },
-  {
-    "date": "2026-07-18",
-    "store": "スタジアム2001豊中店",
-    "event": "超玉のリアル",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=96198",
-    "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
-  },
-  {
-    "date": "2026-07-18",
-    "store": "スーパーホール",
-    "event": "じゃんばり景品入荷(炎",
-    "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=96198",
-    "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
-  },
-  {
     "date": "2026-07-19",
     "store": "MEGAFACE1300淀川",
     "event": "スロパチステーション来店取材(オレンジ)",
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
+    "updated_at": "2026-07-19T07:56:59+09:00"
+  },
+  {
+    "date": "2026-07-19",
+    "store": "123+N松原店",
+    "event": "すろぱち景品入荷",
+    "area": "松原市",
+    "source_url": "https://777.slopachi-station.com/keihin_nyuka_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-07-19T07:56:59+09:00"
   },
   {
     "date": "2026-07-21",
@@ -42,7 +24,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
+    "updated_at": "2026-07-19T07:56:59+09:00"
   },
   {
     "date": "2026-07-26",
@@ -51,7 +33,7 @@
     "area": "堺市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
+    "updated_at": "2026-07-19T07:56:59+09:00"
   },
   {
     "date": "2026-07-27",
@@ -60,7 +42,7 @@
     "area": "松原市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
+    "updated_at": "2026-07-19T07:56:59+09:00"
   },
   {
     "date": "2026-07-29",
@@ -69,7 +51,7 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
+    "updated_at": "2026-07-19T07:56:59+09:00"
   },
   {
     "date": "2026-08-11",
@@ -78,6 +60,6 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-07-18T07:55:51+09:00"
+    "updated_at": "2026-07-19T07:56:59+09:00"
   }
 ]
