@@ -1,29 +1,56 @@
 [
   {
-    "date": "2026-08-22",
-    "store": "キクヤ堺本店",
-    "event": "スロパチステーション来店取材(オレンジ)",
-    "area": "堺市",
-    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
-    "category": "pachinko",
-    "updated_at": "2026-08-22T07:31:58+09:00"
-  },
-  {
-    "date": "2026-08-22",
+    "date": "2026-08-23",
     "store": "スタジアム2001豊中店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=98549",
+    "source_url": "https://slotkansai.com/?p=98805",
     "category": "pachinko",
-    "updated_at": "2026-08-22T07:31:58+09:00"
+    "updated_at": "2026-08-23T07:29:17+09:00"
   },
   {
-    "date": "2026-08-22",
+    "date": "2026-08-23",
     "store": "スーパーホール",
     "event": "じゃんばり景品入荷(炎",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=98549",
+    "source_url": "https://slotkansai.com/?p=98805",
     "category": "pachinko",
-    "updated_at": "2026-08-22T07:31:58+09:00"
+    "updated_at": "2026-08-23T07:29:17+09:00"
+  },
+  {
+    "date": "2026-08-23",
+    "store": "マルハン寝屋川店",
+    "event": "超玉のリアル",
+    "area": "大阪",
+    "source_url": "https://slotkansai.com/?p=98805",
+    "category": "pachinko",
+    "updated_at": "2026-08-23T07:29:17+09:00"
+  },
+  {
+    "date": "2026-08-27",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロぱちガール来店PS",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-08-23T07:29:17+09:00"
+  },
+  {
+    "date": "2026-09-09",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロパチステーション来店取材(オレンジ)",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-08-23T07:29:17+09:00"
+  },
+  {
+    "date": "2026-09-19",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロパチステーション来店取材(オレンジ)",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-08-23T07:29:17+09:00"
   }
 ]
