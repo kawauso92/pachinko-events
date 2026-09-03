@@ -1,12 +1,12 @@
 [
   {
-    "date": "2026-09-03",
+    "date": "2026-09-04",
     "store": "スタジアム2001豊中店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=99315",
+    "source_url": "https://slotkansai.com/?p=99391",
     "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
+    "updated_at": "2026-09-04T08:55:37+09:00"
   },
   {
     "date": "2026-09-08",
@@ -15,7 +15,7 @@
     "area": "松原市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
+    "updated_at": "2026-09-04T08:55:37+09:00"
   },
   {
     "date": "2026-09-09",
@@ -24,7 +24,7 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
+    "updated_at": "2026-09-04T08:55:37+09:00"
   },
   {
     "date": "2026-09-11",
@@ -33,16 +33,7 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
-  },
-  {
-    "date": "2026-09-12",
-    "store": "K'ZONE",
-    "event": "わーさん道場破り",
-    "area": "大阪",
-    "source_url": "https://tama-dojo.com/",
-    "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
+    "updated_at": "2026-09-04T08:55:37+09:00"
   },
   {
     "date": "2026-09-13",
@@ -51,16 +42,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
-  },
-  {
-    "date": "2026-09-19",
-    "store": "K'ZONE",
-    "event": "わーさん道場破り",
-    "area": "大阪",
-    "source_url": "https://tama-dojo.com/",
-    "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
+    "updated_at": "2026-09-04T08:55:37+09:00"
   },
   {
     "date": "2026-09-19",
@@ -69,6 +51,6 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-03T09:00:17+09:00"
+    "updated_at": "2026-09-04T08:55:37+09:00"
   }
 ]
