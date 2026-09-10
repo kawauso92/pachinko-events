@@ -1,12 +1,12 @@
 [
   {
-    "date": "2026-09-10",
+    "date": "2026-09-11",
     "store": "スタジアム2001豊中店",
     "event": "超玉のリアル",
     "area": "大阪",
-    "source_url": "https://slotkansai.com/?p=99803",
+    "source_url": "https://slotkansai.com/?p=99856",
     "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
+    "updated_at": "2026-09-11T08:57:30+09:00"
   },
   {
     "date": "2026-09-11",
@@ -15,7 +15,7 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
+    "updated_at": "2026-09-11T08:57:30+09:00"
   },
   {
     "date": "2026-09-11",
@@ -24,16 +24,7 @@
     "area": "門真市",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
-  },
-  {
-    "date": "2026-09-12",
-    "store": "K'ZONE",
-    "event": "わーさん道場破り",
-    "area": "大阪",
-    "source_url": "https://tama-dojo.com/",
-    "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
+    "updated_at": "2026-09-11T08:57:30+09:00"
   },
   {
     "date": "2026-09-13",
@@ -42,16 +33,7 @@
     "area": "堺市美原区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
-  },
-  {
-    "date": "2026-09-19",
-    "store": "K'ZONE",
-    "event": "わーさん道場破り",
-    "area": "大阪",
-    "source_url": "https://tama-dojo.com/",
-    "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
+    "updated_at": "2026-09-11T08:57:30+09:00"
   },
   {
     "date": "2026-09-19",
@@ -60,6 +42,15 @@
     "area": "大阪市淀川区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-10T09:02:18+09:00"
+    "updated_at": "2026-09-11T08:57:30+09:00"
+  },
+  {
+    "date": "2026-10-09",
+    "store": "テキサス大正店",
+    "event": "スロパチステーション来店取材(黒)",
+    "area": "大阪市大正区",
+    "source_url": "https://777.slopachi-station.com/raiten_syuzai002_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-09-11T08:57:30+09:00"
   }
 ]
