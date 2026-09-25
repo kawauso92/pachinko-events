@@ -6,7 +6,7 @@
     "area": "大阪",
     "source_url": "https://jb-portal.com/schedule/?report_id=5",
     "category": "pachinko",
-    "updated_at": "2026-09-24T09:22:19+09:00"
+    "updated_at": "2026-09-25T09:25:11+09:00"
   },
   {
     "date": "2026-09-27",
@@ -15,7 +15,7 @@
     "area": "大阪市中央区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-24T09:22:19+09:00"
+    "updated_at": "2026-09-25T09:25:11+09:00"
   },
   {
     "date": "2026-09-27",
@@ -24,7 +24,16 @@
     "area": "大阪市北区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai006_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-24T09:22:19+09:00"
+    "updated_at": "2026-09-25T09:25:11+09:00"
+  },
+  {
+    "date": "2026-09-27",
+    "store": "MEGAFACE1300淀川",
+    "event": "スロぱちガール来店PS",
+    "area": "大阪市淀川区",
+    "source_url": "https://777.slopachi-station.com/slopachi_girl_schedule/",
+    "category": "pachinko",
+    "updated_at": "2026-09-25T09:25:11+09:00"
   },
   {
     "date": "2026-10-09",
@@ -33,6 +42,6 @@
     "area": "大阪市大正区",
     "source_url": "https://777.slopachi-station.com/raiten_syuzai002_schedule/",
     "category": "pachinko",
-    "updated_at": "2026-09-24T09:22:19+09:00"
+    "updated_at": "2026-09-25T09:25:11+09:00"
   }
 ]
