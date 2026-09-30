@@ -3,7 +3,8 @@ name: Scrape Pachinko Events
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 22 * * *'
+    # 日本時間の0:17から3時間ごとに更新する
+    - cron: '17 */3 * * *'
 
 permissions:
   contents: write
